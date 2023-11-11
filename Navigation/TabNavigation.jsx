@@ -1,7 +1,7 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import HomeScreen from "../Screens/HomeScreen";
-import { Ionicons, FontAwesome } from "@expo/vector-icons";
+import { Ionicons, FontAwesome, Entypo, Feather } from "@expo/vector-icons";
 import SearchScreen from "../Screens/SearchScreen";
 import UserScreen from "../Screens/UserScreen";
 import { COLORS } from "../constants";
@@ -34,9 +34,9 @@ const TabNavigation = () => {
         options={{
           tabBarIcon: ({ focused, color }) =>
             focused ? (
-              <Ionicons name="search" size={24} color={color} />
+              <Entypo name="shopping-bag" size={24} color={color} />
             ) : (
-              <Ionicons name="search-outline" size={24} color={color} />
+              <Feather name="shopping-bag" size={24} color={color} />
             ),
           tabBarActiveTintColor: COLORS.deep,
           tabBarShowLabel: false,

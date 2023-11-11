@@ -19,6 +19,7 @@ const HorizontalView = () => {
       imageUrl:
         "https://res.cloudinary.com/dygl40fym/image/upload/v1699684179/info_cqlwi7.jpg",
       price: 2000,
+      description: "lorem ipsum dolor si amet",
     },
     {
       id: 2,
@@ -26,6 +27,7 @@ const HorizontalView = () => {
       imageUrl:
         "https://res.cloudinary.com/dygl40fym/image/upload/v1699684179/info_cqlwi7.jpg",
       price: 3000,
+      description: "lorem ipsum dolor si amet",
     },
     {
       id: 3,
@@ -33,6 +35,7 @@ const HorizontalView = () => {
       imageUrl:
         "https://res.cloudinary.com/dygl40fym/image/upload/v1699684179/info_cqlwi7.jpg",
       price: 2500,
+      description: "lorem ipsum dolor si amet",
     },
     {
       id: 4,
@@ -40,6 +43,7 @@ const HorizontalView = () => {
       imageUrl:
         "https://res.cloudinary.com/dygl40fym/image/upload/v1699684179/info_cqlwi7.jpg",
       price: 2000,
+      description: "lorem ipsum dolor si amet",
     },
     {
       id: 5,
@@ -47,6 +51,7 @@ const HorizontalView = () => {
       imageUrl:
         "https://res.cloudinary.com/dygl40fym/image/upload/v1699684179/info_cqlwi7.jpg",
       price: 5000,
+      description: "lorem ipsum dolor si amet",
     },
     {
       id: 6,
@@ -54,6 +59,7 @@ const HorizontalView = () => {
       imageUrl:
         "https://res.cloudinary.com/dygl40fym/image/upload/v1699684179/info_cqlwi7.jpg",
       price: 5000,
+      description: "lorem ipsum dolor si amet",
     },
   ];
   return (
@@ -68,7 +74,7 @@ const HorizontalView = () => {
             rounded={"2xl"}
             w={130}
             bg={COLORS.white}
-            shadow={"3"}
+            shadow={"1"}
           >
             <Image
               source={{ uri: item.item.imageUrl }}
@@ -86,6 +92,15 @@ const HorizontalView = () => {
             >
               {item.item.name}
             </Text>
+            <Text
+              fontWeight={"bold"}
+              numberOfLines={1}
+              fontSize={SIZES.small - 2}
+              color={COLORS.mediumDeep}
+              mt={1}
+            >
+              {item.item.price}
+            </Text>
           </View>
         )}
         keyExtractor={(item) => item.id}
@@ -95,12 +110,9 @@ const HorizontalView = () => {
         }}
         horizontal
         showsHorizontalScrollIndicator={false}
-        gap={2}
       />
     </Box>
   );
 };
 
 export default HorizontalView;
-
-const styles = StyleSheet.create({});

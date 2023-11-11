@@ -55,13 +55,17 @@ const ListView = () => {
     },
   ];
 
+  /**
+   * for search
+   * the newArray will be mapped out is there is a search
+   */
+  const newArray = data.filter((e) => {
+    return e.id == 5;
+  });
   return (
     <View px={SIZES.small}>
-      <Text fontWeight={"bold"} mb={2} pl={1}>
-        Products
-      </Text>
-
-      {data.slice(0, 4).map((item) => {
+      <Text>ListView</Text>
+      {data.map((item) => {
         return (
           <TouchableOpacity activeOpacity={0.5}>
             <Box

@@ -14,6 +14,8 @@ const InfoCard = () => {
           style={styles.infoImage}
         />
         <Text style={styles.infoText}>Great Deals</Text>
+        <Text style={styles.infoSubText}>Best marketplace</Text>
+        <Text style={styles.infoSubText}>for your beads</Text>
       </View>
     </Box>
   );
@@ -28,7 +30,7 @@ const styles = StyleSheet.create({
     height: 200,
     backgroundColor: COLORS.mediumDeep,
     justifyContent: "center",
-    borderRadius: SIZES.medium,
+    borderRadius: SIZES.small,
   },
   infoImage: {
     width: "100%",
@@ -36,7 +38,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     objectFit: "cover",
     opacity: 0.4,
-    borderRadius: SIZES.medium,
+    borderRadius: SIZES.small,
   },
   infoText: {
     fontFamily: "fugaz",
@@ -44,5 +46,16 @@ const styles = StyleSheet.create({
     color: COLORS.lightGrey,
     alignSelf: "flex-end",
     paddingHorizontal: SIZES.small,
+    marginBottom: 0,
+    lineHeight: 50,
+  },
+  infoSubText: {
+    fontFamily: "merienda",
+    fontSize: SIZES.medium,
+    color: COLORS.lightGrey,
+    alignSelf: "flex-end",
+    paddingHorizontal: SIZES.medium,
+    marginTop: 0,
+    lineHeight: 25,
   },
 });

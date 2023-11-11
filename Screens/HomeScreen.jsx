@@ -5,13 +5,14 @@ import Header from "../Components/HomeScreen/Header";
 import InfoCard from "../Components/HomeScreen/InfoCard";
 import HorizontalView from "../Components/HomeScreen/HorizontalView";
 import { ScrollView, Text } from "native-base";
+import ListView from "../Components/HomeScreen/ListView";
 
 const HomeScreen = () => {
   return (
     <View style={styles.container}>
       {/* header */}
       <Header />
-      <ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
         {/* info card */}
         <InfoCard />
         {/* latest */}
@@ -20,6 +21,9 @@ const HomeScreen = () => {
             Latest
           </Text>
           <HorizontalView />
+        </View>
+        <View>
+          <ListView />
         </View>
       </ScrollView>
     </View>
