@@ -2,8 +2,10 @@ import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
 import { COLORS, SIZES } from "../../constants";
 import { Ionicons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
 const Header = () => {
+  const navigation = useNavigation();
   return (
     <View
       style={{
@@ -39,7 +41,7 @@ const Header = () => {
           </Text>
         </View>
       </View>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate("SearchScreen")}>
         <Ionicons name="search" size={SIZES.medium} color={COLORS.mediumDeep} />
       </TouchableOpacity>
     </View>
