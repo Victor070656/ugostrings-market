@@ -3,7 +3,7 @@ import React from "react";
 import { COLORS, SIZES } from "../../constants";
 import { TouchableOpacity } from "react-native";
 
-const ListView = () => {
+const ListView = ({ inputData }) => {
   const data = [
     {
       id: 1,
@@ -57,22 +57,81 @@ const ListView = () => {
 
   /**
    * for search
-   * the newArray will be mapped out is there is a search
+   * the newArray will be mapped out if there is a search
    */
+
   const newArray = data.filter((e) => {
-    return e.id == 5;
+    let name = e.name.toLowerCase();
+    let description = e.description.toLowerCase();
+    return (
+      name.includes(inputData.toLowerCase()) ||
+      description.includes(inputData.toLowerCase())
+    );
   });
+  // console.log(newArray);
+
+  // search functionality working
+  if (newArray != []) {
+    return (
+      <View px={SIZES.small} py={2}>
+        {newArray.map((item) => {
+          return (
+            <TouchableOpacity activeOpacity={0.5} key={item.id}>
+              <Box
+                w={"full"}
+                h={200}
+                rounded={SIZES.small}
+                mb={2}
+                bg={COLORS.mediumDeep}
+                position={"relative"}
+              >
+                <Image
+                  source={{ uri: item.imageUrl }}
+                  w={"full"}
+                  h={"full"}
+                  rounded={SIZES.small}
+                  opacity={0.5}
+                  alt=""
+                  resizeMode="cover"
+                  position={"relative"}
+                />
+                <View position={"absolute"} bottom={3} px={SIZES.small}>
+                  <Text
+                    numberOfLines={1}
+                    fontWeight={"bold"}
+                    fontSize={SIZES.medium}
+                    color={COLORS.white}
+                    mr={"auto"}
+                  >
+                    {item.name}
+                  </Text>
+                  <Text
+                    fontFamily={"serif"}
+                    fontWeight={"extrabold"}
+                    fontSize={SIZES.large - 5}
+                    lineHeight={SIZES.large - 3}
+                    color={COLORS.lightGrey}
+                  >
+                    ₦ {item.price}
+                  </Text>
+                </View>
+              </Box>
+            </TouchableOpacity>
+          );
+        })}
+      </View>
+    );
+  }
+
   return (
-    <View px={SIZES.small}>
-      <Text>ListView</Text>
+    <View px={SIZES.small} py={2}>
       {data.map((item) => {
         return (
-          <TouchableOpacity activeOpacity={0.5}>
+          <TouchableOpacity activeOpacity={0.5} key={item.id}>
             <Box
               w={"full"}
               h={200}
               rounded={SIZES.small}
-              key={item.id}
               mb={2}
               bg={COLORS.mediumDeep}
               position={"relative"}

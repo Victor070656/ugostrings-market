@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, TouchableOpacity } from "react-native";
 import React from "react";
 import {
   Box,
@@ -67,41 +67,44 @@ const HorizontalView = () => {
       <FlatList
         data={data}
         renderItem={(item) => (
-          <View
-            mr={2}
-            px={1}
-            py={1}
-            rounded={"2xl"}
-            w={130}
-            bg={COLORS.white}
-            shadow={"1"}
-          >
-            <Image
-              source={{ uri: item.item.imageUrl }}
-              alt={item.item.name}
-              resizeMode="cover"
-              rounded={SIZES.tiny}
-              style={{ width: "100%", height: 100 }}
-            />
-            <Text
-              fontWeight={"bold"}
-              numberOfLines={1}
-              fontSize={SIZES.small - 2}
-              color={COLORS.mediumDeep}
-              mt={1}
+          <TouchableOpacity activeOpacity={0.5}>
+            <View
+              mr={2}
+              px={1}
+              py={1}
+              rounded={SIZES.small}
+              w={130}
+              bg={COLORS.white}
+              shadow={"1"}
             >
-              {item.item.name}
-            </Text>
-            <Text
-              fontWeight={"bold"}
-              numberOfLines={1}
-              fontSize={SIZES.small - 2}
-              color={COLORS.mediumDeep}
-              mt={1}
-            >
-              {item.item.price}
-            </Text>
-          </View>
+              <Image
+                source={{ uri: item.item.imageUrl }}
+                alt={item.item.name}
+                resizeMode="cover"
+                rounded={SIZES.tiny}
+                style={{ width: "100%", height: 100 }}
+              />
+              <Text
+                fontWeight={"bold"}
+                numberOfLines={1}
+                fontSize={SIZES.small - 2}
+                color={COLORS.mediumDeep}
+                mt={1}
+              >
+                {item.item.name}
+              </Text>
+              <Text
+                fontWeight={"bold"}
+                numberOfLines={1}
+                fontSize={SIZES.small}
+                color={COLORS.mediumDeep}
+                mt={1}
+                lineHeight={SIZES.small}
+              >
+                ₦ {item.item.price}
+              </Text>
+            </View>
+          </TouchableOpacity>
         )}
         keyExtractor={(item) => item.id}
         _contentContainerStyle={{

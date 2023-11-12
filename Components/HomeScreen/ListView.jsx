@@ -63,12 +63,11 @@ const ListView = () => {
 
       {data.slice(0, 4).map((item) => {
         return (
-          <TouchableOpacity activeOpacity={0.5}>
+          <TouchableOpacity activeOpacity={0.5} key={item.id}>
             <Box
               w={"full"}
               h={200}
               rounded={SIZES.small}
-              key={item.id}
               mb={2}
               bg={COLORS.mediumDeep}
               position={"relative"}
