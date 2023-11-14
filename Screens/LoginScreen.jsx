@@ -1,17 +1,10 @@
 import { StyleSheet, View, Image, ActivityIndicator } from "react-native";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { COLORS, SIZES } from "../constants";
-import { Button, Text } from "native-base";
-import { Ionicons } from "@expo/vector-icons";
 import SignInWithOAuth from "../Components/SignInWithOAuth";
+import { Text } from "native-base";
 
 const LoginScreen = ({ navigation }) => {
-  //   useEffect(() => {
-  //     setTimeout(() => {
-  //       navigation.navigate("Home");
-  //     }, 5000);
-  //   }, []);
-
   return (
     <View style={styles.container}>
       <Image
@@ -45,6 +38,14 @@ const LoginScreen = ({ navigation }) => {
           </Text>
         </Text>
       </Button> */}
+      <Text
+        fontFamily={"meriendaBold"}
+        fontSize={SIZES.xl - 2}
+        mb={4}
+        color={COLORS.lightGrey}
+      >
+        Welcome back
+      </Text>
       <SignInWithOAuth />
       {/* <ActivityIndicator size="large" color={COLORS.lightGrey} /> */}
     </View>

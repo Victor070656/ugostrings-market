@@ -3,7 +3,7 @@ import * as WebBrowser from "expo-web-browser";
 import { useOAuth } from "@clerk/clerk-expo";
 import { useWarmUpBrowser } from "../hooks/warmUpBrowser";
 import { COLORS, SIZES } from "../constants";
-import { Text, Button } from "native-base";
+import { Text, Button, Box } from "native-base";
 import { Ionicons } from "@expo/vector-icons";
 
 WebBrowser.maybeCompleteAuthSession();
@@ -41,17 +41,17 @@ const SignInWithOAuth = () => {
       }}
       onPress={onPress}
     >
-      <Text display={"flex"} flexDirection={"row"} alignItems={"center"}>
+      <Box display={"flex"} flexDirection={"row"} alignItems={"center"}>
         <Ionicons name="logo-google" size={20} color={COLORS.mediumDeep} />
         {"  "}
         <Text
-          fontSize={SIZES.small + 2}
+          fontSize={SIZES.small + 4}
           fontWeight={"extrabold"}
           color={COLORS.mediumDeep}
         >
           Continue with Google
         </Text>
-      </Text>
+      </Box>
     </Button>
   );
 };

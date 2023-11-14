@@ -3,8 +3,11 @@ import React from "react";
 import { COLORS, SIZES } from "../../constants";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
+import { useUser } from "@clerk/clerk-expo";
 
 const Header = () => {
+  const { isLoaded, isSignedIn, user } = useUser();
+
   const navigation = useNavigation();
   return (
     <View
@@ -17,15 +20,28 @@ const Header = () => {
       }}
     >
       <View style={{ flexDirection: "row", gap: 7, alignItems: "center" }}>
-        <Image
-          source={require("../../assets/user.jpg")}
-          style={{
-            width: SIZES.xl,
-            height: SIZES.xl,
-            objectFit: "cover",
-            borderRadius: SIZES.medium,
-          }}
-        />
+        {user.imageUrl ? (
+          <Image
+            source={{ uri: user.imageUrl }}
+            style={{
+              width: SIZES.xl,
+              height: SIZES.xl,
+              objectFit: "cover",
+              borderRadius: SIZES.medium,
+            }}
+          />
+        ) : (
+          <Image
+            source={require("../../assets/user.jpg")}
+            style={{
+              width: SIZES.xl,
+              height: SIZES.xl,
+              objectFit: "cover",
+              borderRadius: SIZES.medium,
+            }}
+          />
+        )}
+
         <View>
           <Text style={{ fontWeight: "700", color: COLORS.mediumDeep }}>
             Hello 👋
@@ -37,11 +53,12 @@ const Header = () => {
               color: COLORS.mediumDeep,
             }}
           >
-            Victor Ikechukwu
+            {/* Victor Ikechukwu */}
+            {user.fullName}
           </Text>
         </View>
       </View>
-      <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+      <TouchableOpacity onPress={() => navigation.navigate("SearchScreen")}>
         <Ionicons name="search" size={SIZES.medium} color={COLORS.mediumDeep} />
       </TouchableOpacity>
     </View>

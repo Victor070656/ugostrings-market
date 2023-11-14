@@ -1,10 +1,18 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
+import HeaderSection from "../Components/UserScreen/HeaderSection";
+import { Box } from "native-base";
 
 const UserScreen = () => {
   return (
     <View>
-      <Text>UserScreen</Text>
+      {/* header */}
+      <HeaderSection />
+      {/*  */}
+      {/* orders */}
+      <Box>
+        <Text>Orders</Text>
+      </Box>
     </View>
   );
 };
