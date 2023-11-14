@@ -7,6 +7,7 @@ import { ActivityIndicator, View } from "react-native";
 import { NativeBaseProvider } from "native-base";
 import { ClerkProvider, SignedIn, SignedOut } from "@clerk/clerk-expo";
 import { CONFIG } from "./constants";
+import LoginScreen from "./Screens/LoginScreen";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -28,9 +29,12 @@ export default function App() {
       <NativeBaseProvider>
         <NavigationContainer>
           <StatusBar hidden />
-          <SignedIn></SignedIn>
-          <SignedOut></SignedOut>
-          <StackNavigation />
+          <SignedIn>
+            <StackNavigation />
+          </SignedIn>
+          <SignedOut>
+            <LoginScreen />
+          </SignedOut>
         </NavigationContainer>
       </NativeBaseProvider>
     </ClerkProvider>

@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import { COLORS, SIZES } from "../constants";
 import { Button, Text } from "native-base";
 import { Ionicons } from "@expo/vector-icons";
+import SignInWithOAuth from "../Components/SignInWithOAuth";
 
 const LoginScreen = ({ navigation }) => {
   //   useEffect(() => {
@@ -23,7 +24,7 @@ const LoginScreen = ({ navigation }) => {
           opacity: 0.2,
         }}
       />
-      <Button
+      {/* <Button
         bg={COLORS.lightGrey}
         rounded={"3xl"}
         display={"flex"}
@@ -43,7 +44,8 @@ const LoginScreen = ({ navigation }) => {
             Continue with Google
           </Text>
         </Text>
-      </Button>
+      </Button> */}
+      <SignInWithOAuth />
       {/* <ActivityIndicator size="large" color={COLORS.lightGrey} /> */}
     </View>
   );

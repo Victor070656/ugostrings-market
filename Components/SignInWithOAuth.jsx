@@ -1,8 +1,10 @@
 import React from "react";
 import * as WebBrowser from "expo-web-browser";
-import { Button } from "react-native";
 import { useOAuth } from "@clerk/clerk-expo";
-import { useWarmUpBrowser } from "../hooks/useWarmUpBrowser";
+import { useWarmUpBrowser } from "../hooks/warmUpBrowser";
+import { COLORS, SIZES } from "../constants";
+import { Text, Button } from "native-base";
+import { Ionicons } from "@expo/vector-icons";
 
 WebBrowser.maybeCompleteAuthSession();
 
