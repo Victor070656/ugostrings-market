@@ -17,4 +17,8 @@ const SIZES = {
   xxxl: 50,
 };
 
-export { COLORS, SIZES };
+const CONFIG = {
+  KEY: "pk_test_bGlrZWQtc2tpbmstMzAuY2xlcmsuYWNjb3VudHMuZGV2JA",
+};
+
+export { COLORS, SIZES, CONFIG };

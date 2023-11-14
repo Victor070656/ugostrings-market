@@ -28,7 +28,7 @@ const Header = () => {
         />
         <View>
           <Text style={{ fontWeight: "700", color: COLORS.mediumDeep }}>
-            Hello
+            Hello 👋
           </Text>
           <Text
             style={{
@@ -41,7 +41,7 @@ const Header = () => {
           </Text>
         </View>
       </View>
-      <TouchableOpacity onPress={() => navigation.navigate("SearchScreen")}>
+      <TouchableOpacity onPress={() => navigation.navigate("Login")}>
         <Ionicons name="search" size={SIZES.medium} color={COLORS.mediumDeep} />
       </TouchableOpacity>
     </View>
