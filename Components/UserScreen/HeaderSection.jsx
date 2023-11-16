@@ -70,6 +70,7 @@ const HeaderSection = () => {
             justifyContent={"center"}
             flexDir={"row"}
             alignItems={"center"}
+            px={"1.5"}
           >
             <Text fontWeight={"bold"}>Logout</Text>{" "}
             <MaterialIcons name="logout" size={18} color={COLORS.mediumDeep} />

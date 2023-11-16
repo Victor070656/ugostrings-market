@@ -1,59 +1,80 @@
 import { Box, Image, Text, View } from "native-base";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { COLORS, SIZES } from "../../constants";
 import { TouchableOpacity } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 const ListView = ({ inputData }) => {
-  const data = [
-    {
-      id: 1,
-      name: "Black bead medium size",
-      imageUrl:
-        "https://res.cloudinary.com/dygl40fym/image/upload/v1699684179/info_cqlwi7.jpg",
-      price: 2000,
-      description: "lorem ipsum dolor si amet",
-    },
-    {
-      id: 2,
-      name: "Red bead medium size",
-      imageUrl:
-        "https://res.cloudinary.com/dygl40fym/image/upload/v1699684179/info_cqlwi7.jpg",
-      price: 3000,
-      description: "lorem ipsum dolor si amet",
-    },
-    {
-      id: 3,
-      name: "Green bead medium size",
-      imageUrl:
-        "https://res.cloudinary.com/dygl40fym/image/upload/v1699684179/info_cqlwi7.jpg",
-      price: 2500,
-      description: "lorem ipsum dolor si amet",
-    },
-    {
-      id: 4,
-      name: "Gold bead medium size",
-      imageUrl:
-        "https://res.cloudinary.com/dygl40fym/image/upload/v1699684179/info_cqlwi7.jpg",
-      price: 2000,
-      description: "lorem ipsum dolor si amet",
-    },
-    {
-      id: 5,
-      name: "Royal Blue bead medium size",
-      imageUrl:
-        "https://res.cloudinary.com/dygl40fym/image/upload/v1699684179/info_cqlwi7.jpg",
-      price: 5000,
-      description: "lorem ipsum dolor si amet",
-    },
-    {
-      id: 6,
-      name: "Black & Gold bead medium size",
-      imageUrl:
-        "https://res.cloudinary.com/dygl40fym/image/upload/v1699684179/info_cqlwi7.jpg",
-      price: 5000,
-      description: "lorem ipsum dolor si amet",
-    },
-  ];
+  const navigation = useNavigation();
+  const [data, setData] = useState([]);
+
+  const URL = "https://ugo-market-server.onrender.com";
+
+  const getData = async () => {
+    try {
+      const response = await fetch(`${URL}/api/products`);
+      const parseOrders = await response.json();
+      setData(parseOrders);
+      console.log(parseOrders); // Use parseOrders here instead of data
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  // const data = [
+  //   {
+  //     id: 1,
+  //     name: "Black bead medium size",
+  //     imageUrl:
+  //       "https://res.cloudinary.com/dygl40fym/image/upload/v1699684179/info_cqlwi7.jpg",
+  //     price: 2000,
+  //     description: "lorem ipsum dolor si amet",
+  //   },
+  //   {
+  //     id: 2,
+  //     name: "Red bead medium size",
+  //     imageUrl:
+  //       "https://res.cloudinary.com/dygl40fym/image/upload/v1699684179/info_cqlwi7.jpg",
+  //     price: 3000,
+  //     description: "lorem ipsum dolor si amet",
+  //   },
+  //   {
+  //     id: 3,
+  //     name: "Green bead medium size",
+  //     imageUrl:
+  //       "https://res.cloudinary.com/dygl40fym/image/upload/v1699684179/info_cqlwi7.jpg",
+  //     price: 2500,
+  //     description: "lorem ipsum dolor si amet",
+  //   },
+  //   {
+  //     id: 4,
+  //     name: "Gold bead medium size",
+  //     imageUrl:
+  //       "https://res.cloudinary.com/dygl40fym/image/upload/v1699684179/info_cqlwi7.jpg",
+  //     price: 2000,
+  //     description: "lorem ipsum dolor si amet",
+  //   },
+  //   {
+  //     id: 5,
+  //     name: "Royal Blue bead medium size",
+  //     imageUrl:
+  //       "https://res.cloudinary.com/dygl40fym/image/upload/v1699684179/info_cqlwi7.jpg",
+  //     price: 5000,
+  //     description: "lorem ipsum dolor si amet",
+  //   },
+  //   {
+  //     id: 6,
+  //     name: "Black & Gold bead medium size",
+  //     imageUrl:
+  //       "https://res.cloudinary.com/dygl40fym/image/upload/v1699684179/info_cqlwi7.jpg",
+  //     price: 5000,
+  //     description: "lorem ipsum dolor si amet",
+  //   },
+  // ];
 
   /**
    * for search
@@ -76,7 +97,11 @@ const ListView = ({ inputData }) => {
       <View px={SIZES.small} py={2}>
         {newArray.map((item) => {
           return (
-            <TouchableOpacity activeOpacity={0.5} key={item.id}>
+            <TouchableOpacity
+              activeOpacity={0.5}
+              key={item.id}
+              onPress={() => navigation.navigate("Details", item)}
+            >
               <Box
                 w={"full"}
                 h={200}
@@ -110,7 +135,7 @@ const ListView = ({ inputData }) => {
                     fontWeight={"extrabold"}
                     fontSize={SIZES.large - 5}
                     lineHeight={SIZES.large - 3}
-                    color={COLORS.lightGrey}
+                    color={COLORS.white}
                   >
                     ₦ {item.price}
                   </Text>
@@ -127,7 +152,11 @@ const ListView = ({ inputData }) => {
     <View px={SIZES.small} py={2}>
       {data.map((item) => {
         return (
-          <TouchableOpacity activeOpacity={0.5} key={item.id}>
+          <TouchableOpacity
+            activeOpacity={0.5}
+            key={item.id}
+            onPress={() => navigation.navigate("Details", item)}
+          >
             <Box
               w={"full"}
               h={200}
